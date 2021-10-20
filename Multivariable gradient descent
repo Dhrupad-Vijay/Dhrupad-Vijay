@@ -7,14 +7,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 
-path = open('/content/gdrive/MyDrive/Colab Notebooks/ML work/House cost data2.csv')
+path = open('/content/gdrive/MyDrive/Colab Notebooks/ML work/House cost data2.csv')             # Enter the file path
 array = np.loadtxt(path, delimiter=",",dtype = 'int')
-#X = np.c_[array
 no_fetures = len(array[0])-1
 x = array[:,0:no_fetures]
 y = np.transpose([array[:,no_fetures]])
 
-theta = np.zeros((len(x[0])+1,1)) # theta is a 3 X 1 matrix
+theta = np.zeros((len(x[0])+1,1)) # theta is a n X 1 matrix
 
 # Normalization function
 def normalize(x):
@@ -22,7 +21,7 @@ def normalize(x):
     temp1 = x-mu
     sigma = np.std(temp1,axis = 0)
     temp2 = temp1/sigma
-    X = np.c_[np.ones((len(x),1)),temp2]       # X is a 47 X 3 matrix
+    X = np.c_[np.ones((len(x),1)),temp2]       # X is a m X n matrix
     na = [X,mu,sigma]
     return na
 
